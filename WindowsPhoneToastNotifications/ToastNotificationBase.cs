@@ -155,7 +155,11 @@ namespace Deezer.WindowsPhone.UI
 
         internal void AbortNotification()
         {
-            _dismissTimer.Stop();
+            if (_dismissTimer != null)
+            {
+                _dismissTimer.Stop();
+            }
+
             Deployment.Current.Dispatcher.BeginInvoke(() => _toastNotificationManager.RemoveNotificationFromVisualTree(this));
         }
 
